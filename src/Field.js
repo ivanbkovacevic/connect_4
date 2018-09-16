@@ -7,7 +7,7 @@ class Field extends Component {
        
         let coinClass=this.props.coinClass
         return (
-            <li className={coinClass}>{this.props.coinValue}<span>&nbsp;</span></li>
+            <li className='list' onClick={this.props.clicked}>{this.props.coinValue}<span>&nbsp;</span></li>
         );
     }
 }
