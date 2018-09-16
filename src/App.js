@@ -12,7 +12,8 @@ class App extends Component {
 
   state = {
     change: true,
-    coin: null,
+    cId:0,
+    coin: {id:0,value:1},
     v_0_arr: [1],
     v_1_arr: [2],
     v_2_arr: [3],
@@ -24,15 +25,18 @@ class App extends Component {
   }
 
   v_0 = (i) => {
-    let { v_0_arr, change,coin } = this.state;
+    let { v_0_arr, change,coin,cId } = this.state;
     change=!change;
+    cId++;
+    coin.id=cId;
     if(change===true){
-      coin=1;
+      coin.value=2;
     }else{
-      coin=2;
+      coin.value=1;
     }
     v_0_arr = v_0_arr.slice();
     let vLen=v_0_arr.length;
+    
     if(vLen<7){
     v_0_arr.push(coin);
     this.setState({ v_0_arr,change,coin });
@@ -139,7 +143,7 @@ class App extends Component {
     let { coin }=this.state;
     let v_0 = null;
     v_0 = this.state.v_0_arr.map((c, i) => {
-      return <Vertical0 key={i} coin={coin} c={c} clicked={() => this.v_0(i)} />
+      return <Vertical0 key={i} coin={c.value}  clicked={() => this.v_0(i)} />
     });
 
     let v_1 = null;
