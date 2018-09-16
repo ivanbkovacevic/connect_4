@@ -28,6 +28,13 @@ body {
   width: 10vw;
   font-size: 2rem; }
 
+.coin-neutral {
+  color: white;
+  background-color: #131212;
+  height: 15%;
+  width: 90%;
+  font-size: 2rem; }
+
 .coin-yellow {
   color: white;
   background-color: #dada14;
@@ -47,3 +54,16 @@ body {
 .container-main {
   height: 70vh;
   width: 80vw; }
+
+.list {
+  list-style: none; }
+
+.pobeda {
+  display: inline-block;
+  margin-top: 150px;
+  color: black;
+  background-color: #dada14;
+  border: 1px solid red;
+  height: 15%;
+  width: 90%;
+  font-size: 2rem; }

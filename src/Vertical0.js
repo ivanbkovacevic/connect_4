@@ -5,14 +5,21 @@ import Field from './Field';
 class Vertical0 extends Component {
 
     render() {
-        let coin=this.props.coin;
-        let inCoin;
-        coin===1 ? inCoin='coin-yellow' : inCoin='coin-red';
-        
+
+        let coinValue=this.props.coin;
+        let coinClass;
+        if(coinValue===1){
+            coinClass='coin-yellow';
+        }else if(coinValue===2){
+            coinClass='coin-red';
+        }else{
+            coinClass='coin-neutral';
+        }
+      
         return (
-            <div onClick={this.props.clicked}>
-            <ul ><Field inCoin={inCoin}/></ul>
-            </div>
+            <ul className='list' onClick={this.props.clicked}>
+            <Field coinClass={coinClass} coinValue={coinValue}/>
+            </ul>
         );
     }
 }
