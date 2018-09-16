@@ -1,0 +1,36 @@
+.vertical {
+   float: left;
+    color: white;
+    background-color: $color-primary;
+    border: 1px solid white;
+    height: 30vh;
+    width: 10vw;
+    font-size: 2rem;
+}
+
+.coin {
+
+    &-yellow{
+        color: white;
+        background-color: $color-coin-yellow;
+        border: 1px solid red;
+        height: 15%;
+        width: 90%;
+        font-size: 2rem;
+    }
+
+    &-red{
+        color: white;
+        background-color: $color-coin-red;
+        border: 1px solid red;
+        height: 15%;
+        width: 90%;
+        font-size: 2rem;
+    }
+   
+}
+
+.container-main {
+    height: 70vh;
+    width: 80vw;
+}
