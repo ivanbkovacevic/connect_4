@@ -5,13 +5,17 @@ class Vertikala extends Component {
 
 
     render() {
-        let field=this.props.vertikala.map((field,i)=>{
-            return <div key={i}>{field.value}</div>
+         let verticala=this.props.vertikala;
+           verticala=verticala.slice();
+        let verticalaRev=verticala.reverse();
+         let verticalaPrint=verticalaRev.map((field,i)=>{
+            
+            return <Field key={i} value={field.value} />
         })
         return (
            
              <div className='vertical' onClick={this.props.clicked}>
-                 {field}
+                 {verticalaPrint}
             </div>
         );
     }

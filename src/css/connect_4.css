@@ -38,7 +38,7 @@ body {
 .coin-yellow {
   color: white;
   background-color: #dada14;
-  border: 1px solid red;
+  border: 1px solid black;
   height: 15%;
   width: 90%;
   font-size: 2rem; }
@@ -46,7 +46,7 @@ body {
 .coin-red {
   color: white;
   background-color: red;
-  border: 1px solid red;
+  border: 1px solid black;
   height: 15%;
   width: 90%;
   font-size: 2rem; }

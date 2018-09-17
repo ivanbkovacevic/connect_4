@@ -4,10 +4,10 @@ import './css/connect_4.css';
 class Field extends Component {
 
     render() {
-       
-        let coinClass=this.props.coinClass
+        let clName='';
+        this.props.value===1 ? clName='coin-yellow' : clName='coin-red'
         return (
-            <li className='list' onClick={this.props.clicked}>{this.props.coinValue}<span>&nbsp;</span></li>
+            <div className={clName}>{this.props.value}</div>
         );
     }
 }
