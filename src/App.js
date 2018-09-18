@@ -54,7 +54,7 @@ class App extends Component {
     }
   }
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
   dropCoin = (i) => {                   //GLAVNA funkcija    ubacivanje coin-a u verticalu i ubacivanje verticale u boardV
     let { boardV, boardH, boardFull, coin, change, cId, message } = this.state;
     boardV = boardV.slice();
