@@ -10,17 +10,18 @@ class App extends Component {
     winY: 4,
     winR: 8,
     message: '',
-    coin: { id: 0, value: 0 },
+    coin: { id: 0, value: 0, x: 0,y: 0},
     boardV: [[]],
     boardH: [[]],
     boardFull: [
       [], [], [], []
-    ]
+    ],
+    boardMatrix:[]
 
   }
 
   gameStart = () => {   // pocetak igre ... u board ubacuju se 7 praznih vertikala[]
-    let { boardV, boardH, boardFull, coin } = this.state;
+    let { boardV, boardH, boardFull, coin,boardMatrix } = this.state;
     boardV = boardV.slice();
     let vertikala = [];
 
@@ -52,6 +53,22 @@ class App extends Component {
           this.setState({ boardFull });  // pravljenje cele table...ubacivanjem nultog coina
       }
     }
+
+   ///////////////////MATRICA///////////////////
+ 
+   for (let i = 0; i < 7; i++) {
+        let y=[];
+        let count7=i*7;
+        for (let j = 0; j < 7; j++) {
+          let count=j;
+          let countAll=j+count7
+           let coin= {id:countAll, value: 0, x: i, y: j}
+           y.push(coin);
+        }
+        boardMatrix.push(y)
+
+   }
+       this.setState({boardMatrix});
   }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -207,7 +224,7 @@ class App extends Component {
 
   render() {
     let vertikala = null;
-    vertikala = this.state.boardV.map((vert, i) => {
+    vertikala = this.state.boardMatrix.map((vert, i) => {
       return <Vertikala key={i} vertikala={vert} clicked={() => this.dropCoin(i)} />
     })
 
