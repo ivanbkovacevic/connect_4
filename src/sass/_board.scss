@@ -1,4 +1,4 @@
-.vertical {
+.tabla {
    float: left;
     color: white;
     background-color: $color-primary;
@@ -12,28 +12,32 @@
 
     &-neutral{
         color: white;
+        display: inline-block;
         background-color: $color-primary;
-        height: 15%;
-        width: 90%;
+        border: 1px solid $color-coin-yellow;
+        height:15%;
+        width: 13%;
         font-size: 2rem;  
     }
 
     &-yellow{
         color: white;
+        display: inline-block;
         background-color: $color-coin-yellow;
         border: 1px solid black;
-        height: 15%;
-        width: 90%;
+        height:15%;
+        width: 13%;
         font-size: 2rem;
     }
 
     &-red{
         color: white;
+        display: inline-block;
         background-color: $color-coin-red;
         border: 1px solid black;
-        height: 15%;
-        width: 90%;
-        font-size: 2rem;
+        height:15%;
+        width: 13%;
+        font-size:2rem;
        
     }
    
@@ -42,6 +46,16 @@
 .container-main {
     height: 70vh;
     width: 80vw;
+
+}
+
+.header{
+    display:inline-block;
+    text-align: center;
+    background-color: $color-primary;
+    color: white;
+    font-size: 1rem;
+    width: 13%;
 }
 
 .list {

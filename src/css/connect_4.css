@@ -19,7 +19,7 @@ body {
 
 /* 
 ////////////////PRE SET/////////////////////////// */
-.vertical {
+.tabla {
   float: left;
   color: white;
   background-color: #131212;
@@ -30,30 +30,42 @@ body {
 
 .coin-neutral {
   color: white;
+  display: inline-block;
   background-color: #131212;
+  border: 1px solid #dada14;
   height: 15%;
-  width: 90%;
+  width: 13%;
   font-size: 2rem; }
 
 .coin-yellow {
   color: white;
+  display: inline-block;
   background-color: #dada14;
   border: 1px solid black;
   height: 15%;
-  width: 90%;
+  width: 13%;
   font-size: 2rem; }
 
 .coin-red {
   color: white;
+  display: inline-block;
   background-color: red;
   border: 1px solid black;
   height: 15%;
-  width: 90%;
+  width: 13%;
   font-size: 2rem; }
 
 .container-main {
   height: 70vh;
   width: 80vw; }
+
+.header {
+  display: inline-block;
+  text-align: center;
+  background-color: #131212;
+  color: white;
+  font-size: 1rem;
+  width: 13%; }
 
 .list {
   list-style: none; }
