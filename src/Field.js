@@ -5,9 +5,15 @@ class Field extends Component {
 
     render() {
         let clName='';
-        this.props.value===1 ? clName='coin-yellow' : clName='coin-red'
+        if(this.props.value===1){
+            clName='coin-yellow';
+        }else if(this.props.value===2){
+            clName='coin-red';
+        }
+       
         return (
-            <div className={clName}>{this.props.value}</div>
+            <div className={clName} onClick={this.props.clicked}>
+            {this.props.value}-{this.props.x}-{this.props.y}</div>
         );
     }
 }
