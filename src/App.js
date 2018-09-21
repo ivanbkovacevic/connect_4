@@ -66,126 +66,165 @@ class App extends Component {
    this.setState({change,boardMatrix,y_pos});
 
  ///////////////////PROVERAVANJE 4 U NIZU VERTIKALE///////////////////////////////////////////
-//  if(y_pos>2){
-//   let twoInRow=boardMatrix[y_pos-1][x_pos].value;
-//   let treeInRow=boardMatrix[y_pos-2][x_pos].value;
-//   let fourInRow=boardMatrix[y_pos-3][x_pos].value;
+ if(y_pos>2){
+  let twoInRow=boardMatrix[y_pos-1][x_pos].value;
+  let treeInRow=boardMatrix[y_pos-2][x_pos].value;
+  let fourInRow=boardMatrix[y_pos-3][x_pos].value;
 
 
-//   if(lastCoin===twoInRow && lastCoin===treeInRow && lastCoin===fourInRow){
-//     if(lastCoin===1){
-//       message='ZUTI JE POBEDIO';
-//       this.setState({message});
-//     }else{
-//       message='CRVENI JE POBEDIO';
-//       this.setState({message});
-//     }
+  if(lastCoin===twoInRow && lastCoin===treeInRow && lastCoin===fourInRow){
+    if(lastCoin===1){
+      message='ZUTI JE POBEDIO';
+      this.setState({message});
+    }else{
+      message='CRVENI JE POBEDIO';
+      this.setState({message});
+    }
       
-//   }
-//  }
+  }
+ }
 
-//   /////////////////// PROVERAVANJE 4 U NIZU HORIZONTALE ///////////////////////////////////////////
+  /////////////////// PROVERAVANJE 4 U NIZU HORIZONTALE ///////////////////////////////////////////
   
-//   if(x_pos>2){ /// od levo ka desno
-//     let horTwoLtoR=boardMatrix[y_pos][x_pos-1].value;
-//     let horTreekLtoR=boardMatrix[y_pos][x_pos-2].value;
-//     let horFourLtoR=boardMatrix[y_pos][x_pos-3].value;
+  if(x_pos>2){ /// od levo ka desno
+    let horTwoLtoR=boardMatrix[y_pos][x_pos-1].value;
+    let horTreekLtoR=boardMatrix[y_pos][x_pos-2].value;
+    let horFourLtoR=boardMatrix[y_pos][x_pos-3].value;
 
-//     if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
-//       if(lastCoin===1){
-//         message='ZUTI JE POBEDIO';
-//         this.setState({message});
-//       }else{
-//         message='CRVENI JE POBEDIO';
-//         this.setState({message});
-//       }   
-//     }
-//   }
+    if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
+      if(lastCoin===1){
+        message='ZUTI JE POBEDIO';
+        this.setState({message});
+      }else{
+        message='CRVENI JE POBEDIO';
+        this.setState({message});
+      }   
+    }
+  }
 
 
-//   if(x_pos<4){ /// od desno ka levo
-//     let horTwoLtoR=boardMatrix[y_pos][x_pos+1].value;
-//     let horTreekLtoR=boardMatrix[y_pos][x_pos+2].value;
-//     let horFourLtoR=boardMatrix[y_pos][x_pos+3].value;
+  if(x_pos<4){ /// od desno ka levo
+    let horTwoLtoR=boardMatrix[y_pos][x_pos+1].value;
+    let horTreekLtoR=boardMatrix[y_pos][x_pos+2].value;
+    let horFourLtoR=boardMatrix[y_pos][x_pos+3].value;
 
-//     if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
-//       if(lastCoin===1){
-//         message='ZUTI JE POBEDIO';
-//         this.setState({message});
-//       }else{
-//         message='CRVENI JE POBEDIO';
-//         this.setState({message});
-//       }   
-//     }
-//   }
+    if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
+      if(lastCoin===1){
+        message='ZUTI JE POBEDIO';
+        this.setState({message});
+      }else{
+        message='CRVENI JE POBEDIO';
+        this.setState({message});
+      }   
+    }
+  }
 
-    /////////////////// PROVERAVANJE 4 U DIJAGONALA OD LEVO KA DESNO ///////////////////////////////////////////
-  /// od GORE ka DOLE
-    // if(x_pos<7){ 
-    //   if(y_pos<4){
-    //     let dijTwoUtoD=boardMatrix[y_pos-1][x_pos+1].value;
-    //     let dijTreeUtoD=boardMatrix[y_pos-2][x_pos+2].value;
-    //     let dijFourUtoD=boardMatrix[y_pos-3][x_pos+3].value;
+    /////////////////// PROVERAVANJE 4 U DIJAGONALA OD LEVO KA DESNO -///////////////////////////////////////////
+  /// od gore ka dole
+    if(x_pos<4){ 
+      if(y_pos>2){
+        let dij_2_downToUpLtoR=boardMatrix[y_pos-1][x_pos+1].value;
+        let dij_3_downToUpLtoR=boardMatrix[y_pos-2][x_pos+2].value;
+        let dij_4_downToUpLtoR=boardMatrix[y_pos-3][x_pos+3].value;
       
+      if( lastCoin===dij_2_downToUpLtoR  && lastCoin===dij_3_downToUpLtoR && lastCoin===dij_4_downToUpLtoR ){
+        if(lastCoin===1){
+          message='1 ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
+          this.setState({message});
+        }else{
+          message='1 CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
+          this.setState({message});
+        }
+        }   
+      }
+    }
 
-    //   if( lastCoin===dijTwoUtoD  && lastCoin===dijTreeUtoD && lastCoin===dijFourUtoD ){
-    //     if(lastCoin===1){
-    //       message='ZUTI JE POBEDIO';
-    //       this.setState({message});
-    //     }else{
-    //       message='CRVENI JE POBEDIO';
-    //       this.setState({message});
-    //     }
-    //     }   
-    //   }
-    // }
+ /// od dole ka gore
+ if(x_pos>2){ 
+  if(y_pos<4){
+    let dij_2_UptoDownLtoR=boardMatrix[y_pos+1][x_pos-1].value;
+    let dij_3_UptoDownLtoR=boardMatrix[y_pos+2][x_pos-2].value;
+    let dij_4_UptoDownLtoR=boardMatrix[y_pos+3][x_pos-3].value;
   
-  
-    // if(x_pos<4){ /// od desno ka levo
-    //   let horTwoLtoR=boardMatrix[y_pos][x_pos+1].value;
-    //   let horTreekLtoR=boardMatrix[y_pos][x_pos+2].value;
-    //   let horFourLtoR=boardMatrix[y_pos][x_pos+3].value;
-  
-    //   if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
-    //     if(lastCoin===1){
-    //       message='ZUTI JE POBEDIO';
-    //       this.setState({message});
-    //     }else{
-    //       message='CRVENI JE POBEDIO';
-    //       this.setState({message});
-    //     }   
-    //   }
-    // }
+  if( lastCoin===dij_2_UptoDownLtoR  && lastCoin===dij_3_UptoDownLtoR && lastCoin===dij_4_UptoDownLtoR ){
+    if(lastCoin===1){
+      message='2 ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
+      this.setState({message});
+    }else{
+      message='2 CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
+      this.setState({message});
+    }
+    }   
+  }
+}
+
+    /////////////////// PROVERAVANJE 4 U DIJAGONALA OD DESNO KA LEVO -///////////////////////////////////////////
+  /// od dole ka gore
+  if(x_pos<4){ 
+    if(y_pos<4){
+      let dij_2_downToUpRtoL=boardMatrix[y_pos+1][x_pos+1].value;
+      let dij_3_downToUpRtoL=boardMatrix[y_pos+2][x_pos+2].value;
+      let dij_4_downToUpRtoL=boardMatrix[y_pos+3][x_pos+3].value;
+    
+
+    if( lastCoin===dij_2_downToUpRtoL  && lastCoin===dij_3_downToUpRtoL && lastCoin===dij_4_downToUpRtoL ){
+      if(lastCoin===1){
+        message='3 ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
+        this.setState({message});
+      }else{
+        message='3 CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
+        this.setState({message});
+      }
+      }   
+    }
+  }
+
+/// od gore ka dole
+if(x_pos<4){ 
+if(y_pos>2){
+  let dij_2_UptoDownRtoL=boardMatrix[y_pos-1][x_pos+1].value;
+  let dij_3_UptoDownRtoL=boardMatrix[y_pos-2][x_pos+2].value;
+  let dij_4_UptoDownRtoL=boardMatrix[y_pos-3][x_pos+3].value;
+
+if( lastCoin===dij_2_UptoDownRtoL  && lastCoin===dij_3_UptoDownRtoL && lastCoin===dij_4_UptoDownRtoL ){
+  if(lastCoin===1){
+    message='4 ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
+    this.setState({message});
+  }else{
+    message='4 CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
+    this.setState({message});
+  }
+  }   
+}
+}
  
   
   /////////////////////////////////////POKUSAJ PROVERAVANJA OD JEDNOM//////////////////////////
 
- if(x_pos>2 ){
+//  if(x_pos>2 && x_pos<4 ){
 
-    for(let ix=1;ix<4;ix++ ){
-      ix=Number(ix);
-     let iy=0;
+//     for(let ix=1;ix<4;ix++ ){
+//       ix=Number(ix);
+//      let iy=0;
     
-        let twoInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
-        if(lastCoin===twoInRowU ){
-          let treeInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
-          if(lastCoin===treeInRowU ){
-            let fourInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
-            if(lastCoin===fourInRowU){
-              if(lastCoin===1){
-                message='ZUTI JE POBEDIO';
-                this.setState({message});
-              }else{
-                message='CRVENI JE POBEDIO';
-                this.setState({message});
-              }   
-            }
-          }
-        
-      }
-    }  
-
- }
+//         let twoInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
+//         if(lastCoin===twoInRowU ){
+//           let treeInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
+//           if(lastCoin===treeInRowU ){
+//             let fourInRowU=boardMatrix[y_pos-iy][x_pos-ix].value;
+//             if(lastCoin===fourInRowU){
+//               if(lastCoin===1){
+//                 message='ZUTI JE POBEDIO';
+//                 this.setState({message});
+//               }else{
+//                 message='CRVENI JE POBEDIO';
+//                 this.setState({message});
+//               }   
+//             }
+//           }
+//       }
+//     }  
+//  }
    
   
  
@@ -201,7 +240,8 @@ class App extends Component {
         let v=boardMatrix[i][j].value;
         let x=boardMatrix[i][j].x;
         let y=boardMatrix[i][j].y;
-        tabla.push( <Tabla key={i+j} x={x} y={y} v={v} clicked={() => this.dropCoin(i,v,x,y)} />
+        let id=boardMatrix[i][j].id;
+        tabla.push( <Tabla key={i+j} x={x} y={y} v={v} id={id} clicked={() => this.dropCoin(i,v,x,y)} />
         
         )} 
  }

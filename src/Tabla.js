@@ -16,7 +16,7 @@ class Tabla extends Component {
                  
                     <div className={classN} onClick={this.props.clicked}>
                    
-                       v={this.props.v} x={this.props.x} y={this.props.y} 
+                      x{this.props.x} y{this.props.y}
                     </div>   
              
         );
