@@ -51,7 +51,7 @@ class App extends Component {
     xDropedArr=xDropedArr.slice();    
     let x_pos=x;     //  trazenje kolone u kojoj je ubacen coin i ubacivanje na dno prv put pa ya jedno mesto gore svaki drugi put
      y_pos=xDropedArr[x_pos].value++;  // slaganje coina u coloni
-      
+   
       this.setState({xDropedArr,y_pos});
   
     change = !change;
@@ -62,11 +62,68 @@ class App extends Component {
       value = 1;
     }
 
-    boardMatrix[y_pos][x_pos].value=value; // konkretna-GLAVNA promena boje u matrici
+    let lastCoin=boardMatrix[y_pos][x_pos].value=value; // konkretna-GLAVNA promena boje u matrici
    
    this.setState({change,boardMatrix,y_pos});
  ///////////////////PROVERAVANJE 4 U NIZU VERTIKALE///////////////////////////////////////////
+ if(y_pos>2){
+  let twoInRow=boardMatrix[y_pos-1][x_pos].value;
+  let treeInRow=boardMatrix[y_pos-2][x_pos].value;
+  let fourInRow=boardMatrix[y_pos-3][x_pos].value;
+
+
+  if(lastCoin===twoInRow && lastCoin===treeInRow && lastCoin===fourInRow){
+    if(lastCoin===1){
+      message='ZUTI JE POBEDIO';
+      this.setState({message});
+    }else{
+      message='CRVENI JE POBEDIO';
+      this.setState({message});
+    }
+      
+  }
+ }
+
+  /////////////////// PROVERAVANJE 4 U NIZU HORIZONTALE ///////////////////////////////////////////
+  
+  if(x_pos>2){ /// od levo ka desno
+    let horTwoLtoR=boardMatrix[y_pos][x_pos-1].value;
+    let horTreekLtoR=boardMatrix[y_pos][x_pos-2].value;
+    let horFourLtoR=boardMatrix[y_pos][x_pos-3].value;
+
+    if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
+      if(lastCoin===1){
+        message='ZUTI JE POBEDIO';
+        this.setState({message});
+      }else{
+        message='CRVENI JE POBEDIO';
+        this.setState({message});
+      }   
+    }
+  }
+
+
+  if(x_pos<4){ /// od levo ka desno
+    let horTwoLtoR=boardMatrix[y_pos][x_pos+1].value;
+    let horTreekLtoR=boardMatrix[y_pos][x_pos+2].value;
+    let horFourLtoR=boardMatrix[y_pos][x_pos+3].value;
+
+    if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
+      if(lastCoin===1){
+        message='ZUTI JE POBEDIO';
+        this.setState({message});
+      }else{
+        message='CRVENI JE POBEDIO';
+        this.setState({message});
+      }   
+    }
+  }
+ 
+  
+  
+ 
    
+  
  
   }
 
