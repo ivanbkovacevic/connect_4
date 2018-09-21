@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './css/connect_4.css';
 import Tabla from './Tabla';
+import ScoreBoard from './ScoreBoard';
 
 
 class App extends Component {
@@ -16,10 +17,13 @@ class App extends Component {
     boardMatrix:[],
     xDropedArr:[],
     sirina:7,
-    visina:7
+    visina:7,
+
+    scoreY:0,
+    scoreR:0
   }
 
-  gameStart = () => {   // pocetak igre ... 
+  gameStart = () => {   // POCETAK IGRE ... 
     let {  coin,boardMatrix,sirina,visina, xDropedArr } = this.state;
    
    ///////////////////MATRICA///////////////////
@@ -43,9 +47,38 @@ class App extends Component {
        this.setState({boardMatrix,  xDropedArr});
   }
 
+
+  gameReset = () => {   // RESETOVANJE IGRE ... 
+    let {  coin,boardMatrix,sirina,visina, xDropedArr,message } = this.state;
+   
+   ///////////////////MATRICA///////////////////
+   boardMatrix = boardMatrix.slice();
+   boardMatrix=[];
+ 
+   xDropedArr = xDropedArr.slice();
+   xDropedArr=[];
+   message='';
+  
+   for (let i = 0; i < visina; i++) {
+ 
+        let y=[];
+        let count7=i*7;
+        for (let j = 0; j < sirina; j++) {
+          let xDroped={value:0};
+          xDropedArr.push(xDroped);
+          let countAll=j+count7
+            coin={id:countAll, value: 0, x: j, y: i};
+           y.push(coin);
+        }
+        boardMatrix.push(y)
+
+   }
+       this.setState({boardMatrix,xDropedArr,message});
+  }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
   dropCoin = (i,v,x,y) => {                   //GLAVNA funkcija    ubacivanje coin-a u verticalu i ubacivanje verticale u boardV
-    let { boardMatrix, coin, change, message,y_pos,sirina,xDropedArr } = this.state;
+    let { boardMatrix, change, message,y_pos,xDropedArr,scoreR,scoreY } = this.state;
     boardMatrix=boardMatrix.slice();    
      
     xDropedArr=xDropedArr.slice();    
@@ -62,23 +95,28 @@ class App extends Component {
       value = 1;
     }
 
-    let lastCoin=boardMatrix[y_pos][x_pos].value=value; // konkretna-GLAVNA promena boje u matrici
-   this.setState({change,boardMatrix,y_pos});
+    let lastCoin;
+    if(y_pos<7 && message.length===0){
+      lastCoin=boardMatrix[y_pos][x_pos].value=value; // konkretna-GLAVNA promena boje u matrici  --JAKO BITNO---
+      this.setState({change,boardMatrix,y_pos});
+    }
+    
 
  ///////////////////PROVERAVANJE 4 U NIZU VERTIKALE///////////////////////////////////////////
- if(y_pos>2){
+ if(y_pos>2 && y_pos<7){
   let twoInRow=boardMatrix[y_pos-1][x_pos].value;
   let treeInRow=boardMatrix[y_pos-2][x_pos].value;
   let fourInRow=boardMatrix[y_pos-3][x_pos].value;
 
-
   if(lastCoin===twoInRow && lastCoin===treeInRow && lastCoin===fourInRow){
     if(lastCoin===1){
       message='ZUTI JE POBEDIO';
-      this.setState({message});
+      scoreY++;
+      this.setState({message,scoreY});
     }else{
       message='CRVENI JE POBEDIO';
-      this.setState({message});
+      scoreR++;
+      this.setState({message,scoreR});
     }
       
   }
@@ -86,7 +124,7 @@ class App extends Component {
 
   /////////////////// PROVERAVANJE 4 U NIZU HORIZONTALE ///////////////////////////////////////////
   
-  if(x_pos>2){ /// od levo ka desno
+  if(x_pos>2 && y_pos<7){ /// od levo ka desno
     let horTwoLtoR=boardMatrix[y_pos][x_pos-1].value;
     let horTreekLtoR=boardMatrix[y_pos][x_pos-2].value;
     let horFourLtoR=boardMatrix[y_pos][x_pos-3].value;
@@ -94,16 +132,18 @@ class App extends Component {
     if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
       if(lastCoin===1){
         message='ZUTI JE POBEDIO';
-        this.setState({message});
+        scoreY++;
+        this.setState({message,scoreY});
       }else{
         message='CRVENI JE POBEDIO';
-        this.setState({message});
+        scoreR++;
+      this.setState({message,scoreR});
       }   
     }
   }
 
 
-  if(x_pos<4){ /// od desno ka levo
+  if(x_pos<4 && y_pos<7){ /// od desno ka levo
     let horTwoLtoR=boardMatrix[y_pos][x_pos+1].value;
     let horTreekLtoR=boardMatrix[y_pos][x_pos+2].value;
     let horFourLtoR=boardMatrix[y_pos][x_pos+3].value;
@@ -111,17 +151,19 @@ class App extends Component {
     if( lastCoin===horTwoLtoR  && lastCoin===horTreekLtoR && lastCoin===horFourLtoR ){
       if(lastCoin===1){
         message='ZUTI JE POBEDIO';
-        this.setState({message});
+        scoreY++;
+      this.setState({message,scoreY});
       }else{
         message='CRVENI JE POBEDIO';
-        this.setState({message});
+        scoreR++;
+      this.setState({message,scoreR});
       }   
     }
   }
 
     /////////////////// PROVERAVANJE 4 U DIJAGONALA OD LEVO KA DESNO -///////////////////////////////////////////
   /// od gore ka dole
-    if(x_pos<4){ 
+    if(x_pos<4 && y_pos<7){ 
       if(y_pos>2){
         let dij_2_downToUpLtoR=boardMatrix[y_pos-1][x_pos+1].value;
         let dij_3_downToUpLtoR=boardMatrix[y_pos-2][x_pos+2].value;
@@ -130,10 +172,12 @@ class App extends Component {
       if( lastCoin===dij_2_downToUpLtoR  && lastCoin===dij_3_downToUpLtoR && lastCoin===dij_4_downToUpLtoR ){
         if(lastCoin===1){
           message='1 ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
-          this.setState({message});
+          scoreY++;
+          this.setState({message,scoreY});
         }else{
           message='1 CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
-          this.setState({message});
+          scoreR++;
+          this.setState({message,scoreR});
         }
         }   
       }
@@ -141,7 +185,7 @@ class App extends Component {
 
  /// od dole ka gore
  if(x_pos>2){ 
-  if(y_pos<4){
+  if(y_pos<4 && y_pos<7){
     let dij_2_UptoDownLtoR=boardMatrix[y_pos+1][x_pos-1].value;
     let dij_3_UptoDownLtoR=boardMatrix[y_pos+2][x_pos-2].value;
     let dij_4_UptoDownLtoR=boardMatrix[y_pos+3][x_pos-3].value;
@@ -149,10 +193,12 @@ class App extends Component {
   if( lastCoin===dij_2_UptoDownLtoR  && lastCoin===dij_3_UptoDownLtoR && lastCoin===dij_4_UptoDownLtoR ){
     if(lastCoin===1){
       message='2 ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
-      this.setState({message});
+      scoreY++;
+      this.setState({message,scoreY});
     }else{
       message='2 CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
-      this.setState({message});
+      scoreR++;
+      this.setState({message,scoreR});
     }
     }   
   }
@@ -161,7 +207,7 @@ class App extends Component {
     /////////////////// PROVERAVANJE 4 U DIJAGONALA OD DESNO KA LEVO -///////////////////////////////////////////
   /// od dole ka gore
   if(x_pos<4){ 
-    if(y_pos<4){
+    if(y_pos<4 && y_pos<7){
       let dij_2_downToUpRtoL=boardMatrix[y_pos+1][x_pos+1].value;
       let dij_3_downToUpRtoL=boardMatrix[y_pos+2][x_pos+2].value;
       let dij_4_downToUpRtoL=boardMatrix[y_pos+3][x_pos+3].value;
@@ -170,10 +216,12 @@ class App extends Component {
     if( lastCoin===dij_2_downToUpRtoL  && lastCoin===dij_3_downToUpRtoL && lastCoin===dij_4_downToUpRtoL ){
       if(lastCoin===1){
         message='3 ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
-        this.setState({message});
+        scoreY++;
+      this.setState({message,scoreY});
       }else{
         message='3 CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
-        this.setState({message});
+        scoreR++;
+        this.setState({message,scoreR});
       }
       }   
     }
@@ -181,7 +229,7 @@ class App extends Component {
 
 /// od gore ka dole
 if(x_pos<4){ 
-if(y_pos>2){
+if(y_pos>2 && y_pos<7){
   let dij_2_UptoDownRtoL=boardMatrix[y_pos-1][x_pos+1].value;
   let dij_3_UptoDownRtoL=boardMatrix[y_pos-2][x_pos+2].value;
   let dij_4_UptoDownRtoL=boardMatrix[y_pos-3][x_pos+3].value;
@@ -189,10 +237,12 @@ if(y_pos>2){
 if( lastCoin===dij_2_UptoDownRtoL  && lastCoin===dij_3_UptoDownRtoL && lastCoin===dij_4_UptoDownRtoL ){
   if(lastCoin===1){
     message='4 ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
-    this.setState({message});
+    scoreY++;
+    this.setState({message,scoreY});
   }else{
     message='4 CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
-    this.setState({message});
+    scoreR++;
+      this.setState({message,scoreR});
   }
   }   
 }
@@ -231,7 +281,7 @@ if( lastCoin===dij_2_UptoDownRtoL  && lastCoin===dij_3_UptoDownRtoL && lastCoin=
   }
 
   render() {
-    let {boardMatrix}=this.state;
+    let {boardMatrix,scoreR,scoreY}=this.state;
     boardMatrix=boardMatrix.slice();
     boardMatrix=boardMatrix.reverse();
     let tabla = [];
@@ -248,10 +298,12 @@ if( lastCoin===dij_2_UptoDownRtoL  && lastCoin===dij_3_UptoDownRtoL && lastCoin=
   
     return (
       <div className='container-main'>
+      <ScoreBoard scoreY={scoreY} scoreR={scoreR} />
         <div className='pobeda'>
           - {this.state.message}
         </div>
         <button onClick={this.gameStart}>START</button>
+        <button onClick={this.gameReset}>RESET</button>
          {tabla}
       </div>
     );
