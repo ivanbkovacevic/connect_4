@@ -13,7 +13,7 @@ class Tabla extends Component {
 
         return (      
                     <div className='coin-neutral'  onClick={this.props.clicked}>
-                     <div className={classN}> x{this.props.x} y{this.props.y}</div>
+                     <div className={classN}> &nbsp;</div>
                      
                     </div>   
              

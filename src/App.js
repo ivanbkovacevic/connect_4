@@ -118,7 +118,7 @@ class App extends Component {
 
       if (lastCoin === twoInRow && lastCoin === treeInRow && lastCoin === fourInRow) {
         if (lastCoin === 1) {
-          message = 'ZUTI JE POBEDIO';
+          message = 'ŽUTI JE POBEDIO';
           scoreY++;
           this.setState({ message, scoreY });
         } else {
@@ -139,7 +139,7 @@ class App extends Component {
 
       if (lastCoin === horTwoLtoR && lastCoin === horTreekLtoR && lastCoin === horFourLtoR) {
         if (lastCoin === 1) {
-          message = 'ZUTI JE POBEDIO';
+          message = 'ŽUTI JE POBEDIO';
           scoreY++;
           this.setState({ message, scoreY });
         } else {
@@ -158,7 +158,7 @@ class App extends Component {
 
       if (lastCoin === horTwoLtoR && lastCoin === horTreekLtoR && lastCoin === horFourLtoR) {
         if (lastCoin === 1) {
-          message = 'ZUTI JE POBEDIO';
+          message = 'ŽUTI JE POBEDIO';
           scoreY++;
           this.setState({ message, scoreY });
         } else {
@@ -179,11 +179,11 @@ class App extends Component {
 
         if (lastCoin === dij_2_downToUpLtoR && lastCoin === dij_3_downToUpLtoR && lastCoin === dij_4_downToUpLtoR) {
           if (lastCoin === 1) {
-            message = '1A ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
+            message = 'ŽUTI JE POBEDIO';
             scoreY++;
             this.setState({ message, scoreY });
           } else {
-            message = '1A CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD GORE ka DOLE';
+            message = 'CRVENI JE POBEDIO';
             scoreR++;
             this.setState({ message, scoreR });
           }
@@ -200,11 +200,11 @@ class App extends Component {
 
         if (lastCoin === dij_2_UptoDownLtoR && lastCoin === dij_3_UptoDownLtoR && lastCoin === dij_4_UptoDownLtoR) {
           if (lastCoin === 1) {
-            message = '2A ZUTI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
+            message = 'ŽUTI JE POBEDIO';
             scoreY++;
             this.setState({ message, scoreY });
           } else {
-            message = '2A CRVENI JE POBEDIO DIJ OD LEVO KA DESNO OD DOLE KA GORE';
+            message = 'CRVENI JE POBEDIO';
             scoreR++;
             this.setState({ message, scoreR });
           }
@@ -223,11 +223,11 @@ class App extends Component {
 
         if (lastCoin === dij_2_downToUpRtoL && lastCoin === dij_3_downToUpRtoL && lastCoin === dij_4_downToUpRtoL) {
           if (lastCoin === 1) {
-            message = '3B ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
+            message = 'ŽUTI JE POBEDIO';
             scoreY++;
             this.setState({ message, scoreY });
           } else {
-            message = '3B CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD  DOLE KA GORE';
+            message = 'CRVENI JE POBEDIO';
             scoreR++;
             this.setState({ message, scoreR });
           }
@@ -244,11 +244,11 @@ class App extends Component {
 
         if (lastCoin === dij_2_UptoDownRtoL && lastCoin === dij_3_UptoDownRtoL && lastCoin === dij_4_UptoDownRtoL) {
           if (lastCoin === 1) {
-            message = '4B ZUTI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
+            message = 'ŽUTI JE POBEDIO';
             scoreY++;
             this.setState({ message, scoreY });
           } else {
-            message = '4B CRVENI JE POBEDIO DIJ OD DESNO KA LEVO OD KA GORE DA DOLE';
+            message = 'CRVENI JE POBEDIO';
             scoreR++;
             this.setState({ message, scoreR });
           }
@@ -307,14 +307,13 @@ class App extends Component {
 
     return (
       <div className='root'>
-        <ScoreBoard scoreY={scoreY} scoreR={scoreR} />
+        <ScoreBoard scoreY={scoreY} scoreR={scoreR} clicked={()=>this.gameReset()}/>
+     
         <div className='pobeda'>
-          <button onClick={this.gameReset}>NEW GAME</button>
-          - {this.state.message}
+           {this.state.message}
         </div>
         <div className='container-main'>
-       
-        {tabla}
+          {tabla}
         </div>
        
       </div>
