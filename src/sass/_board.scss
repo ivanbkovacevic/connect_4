@@ -10,6 +10,7 @@
 .coin {
 
     &-neutral{
+        flex: 0 1 auto;
         color: $color-primary;
         display: inline-block;
         background-color: $color-primary;
@@ -20,6 +21,7 @@
     }
 
     &-yellow{
+        flex: 0 1 auto;
         color: $color-primary;
       //  display: inline-block;
         background-color: $color-coin-yellow;
@@ -34,6 +36,7 @@
     }
 
     &-red{
+        flex: 0 1 auto;
         color: $color-primary;
       //  display: inline-block;
         background-color: $color-coin-red;
@@ -50,9 +53,17 @@
    
 }
 
+.root{
+    height:80vh;
+    width: 80vw;
+}
+
 .container-main {
-    height: 80vh;
-    width: 90vw;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: stretch;
+    flex-wrap: wrap;
 }
 
 .header{

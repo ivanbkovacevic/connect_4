@@ -306,13 +306,16 @@ class App extends Component {
     }
 
     return (
-      <div className='container-main'>
+      <div className='root'>
         <ScoreBoard scoreY={scoreY} scoreR={scoreR} />
         <div className='pobeda'>
           <button onClick={this.gameReset}>NEW GAME</button>
           - {this.state.message}
         </div>
+        <div className='container-main'>
         {tabla}
+        </div>
+       
       </div>
     );
   }

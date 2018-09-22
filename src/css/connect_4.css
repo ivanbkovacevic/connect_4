@@ -20,6 +20,7 @@ body {
 /* 
 ////////////////PRE SET/////////////////////////// */
 .coin-neutral {
+  flex: 0 1 auto;
   color: #131212;
   display: inline-block;
   background-color: #131212;
@@ -28,6 +29,7 @@ body {
   width: 13%; }
 
 .coin-yellow {
+  flex: 0 1 auto;
   color: #131212;
   background-color: #dada14;
   border-radius: 100%;
@@ -38,6 +40,7 @@ body {
   animation-fill-mode: forwards; }
 
 .coin-red {
+  flex: 0 1 auto;
   color: #131212;
   background-color: red;
   border-radius: 100%;
@@ -47,9 +50,16 @@ body {
   animation-duration: 0.2s;
   animation-fill-mode: forwards; }
 
-.container-main {
+.root {
   height: 80vh;
-  width: 90vw; }
+  width: 80vw; }
+
+.container-main {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap; }
 
 .header {
   display: inline-block;
