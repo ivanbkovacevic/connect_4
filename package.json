@@ -2,7 +2,7 @@
   "name": "connect_4",
   "version": "0.1.0",
   "private": true,
-  "homepage":"https://ivanbkovacevic.github.io/connect_4",
+  "homepage": "https://ivanbkovacevic.github.io/connect_4",
   "dependencies": {
     "gh-pages": "^2.0.0",
     "node-sass": "^4.9.3",
@@ -12,7 +12,7 @@
     "react-scripts": "1.1.5"
   },
   "scripts": {
-    "deploy":"npm run build&&gh-pages -d build",
+    "deploy": "npm run build&&gh-pages -d build",
     "compile:sass": "node-sass ./src/sass/main.scss  ./src/css/connect_4.css -w",
     "start": "react-scripts start",
     "build": "react-scripts build",

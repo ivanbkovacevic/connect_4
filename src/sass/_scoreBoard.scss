@@ -1,17 +1,12 @@
 .semafor{
+  
     background-color:$color-primary;
     color:$color-back;
-    height: 10%;
-    width: 100%;
-   // text-align: center;
-    padding: 15px;
+    height:8vh; 
     font-size: 1rem;
-    letter-spacing: 1rem;
-    margin-top: 10px;
-    float: left;
+   
   }
 
-  
 button {
   border: 1px solid $color-back;
 }
@@ -19,36 +14,70 @@ button {
 .button{
 
   &-newGame{
-      display: inline-block;
+    float:left; 
+  
       color: white;
       background-color: $color-primary;
-      font-size:1rem;
+      font-size: 120%; 
       font-weight: 500;
-      letter-spacing: 5px;
       transition: all 0.5s;
-      height: 90%;
-      width:20%;
-      padding:5px 5px;
-  
+      height: 100%;
+      width:20%; 
+     
       &:hover {
           background-color: $color-primary-light;
-        
         }
 
 }
   
-  &-win{
-      color:$color-back;
-      background-color: $color-primary;
-      font-size:2rem;
+  &-winY{
+    float:left; 
+  
+      color:$color-primary-dark;
+      background-color: $color-coin-yellow;
+      font-size: 200%;
       font-weight: 500;
       transition: all 0.5s;
-      width: 5%;
-      height: 100%;
-      padding: 1px 1px;
-      margin-top: 5px;
-     
+      width:20%;
+      height:100%;   
+      padding: 0.5%;
+
     }
 
+    &-winR{
+      float:left; 
+     
+        color:$color-back;
+        background-color: $color-coin-red; 
+        font-size: 200%;
+        font-weight: 500;
+        transition: all 0.5s;
+        width:20%;
+        height:100%;    
+        padding: 0.5%;
+  
+      }
+
+  }
+
+  .playerY{
+    float:left; 
+    border: 1px solid $color-back;
+    text-align: center;
+    padding-top: 23px;  
+    font-size: 120%;
+    width: 20%; 
+    height:100%;
     
+  }
+
+  .playerR{
+
+    float:left;  
+    border: 1px solid $color-back;
+    text-align: center;
+    padding-top: 23px;  
+    font-size: 120%; 
+    width:20%;
+      height: 100%;
   }

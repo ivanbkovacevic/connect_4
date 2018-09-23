@@ -1,31 +1,42 @@
-// .tabla {
-//    float: left;
-//     color: white;
-//     background-color: $color-primary;
-//     border: 1px solid white;
-//     height: 100%;
-//     width: 100%;
-//     font-size: 2rem;
-// }
+.wraper-ceo{
+ height:100%; 
+ width:100%;   
+
+}
+
+.wraper-tabla{
+    width: 100%; 
+    height: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative; /* If you want text inside of it */ 
+    
+}
+
+.container-tabla {
+    position: absolute;
+    width:100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
 .coin {
 
     &-neutral{
-        flex: 0 1 auto;
         color: $color-primary;
-        display: inline-block;
+        float: left;
         background-color: $color-primary;
         border: 1px solid $color-back;
-        height:14.2%;
-        width: 14.2%;
+        height:14.2%; 
+        width:14.2%; 
         font-size: 0.1rem;  
     }
 
     &-yellow{
-        flex: 0 1 auto;
         color: transparent;
-      //  display: inline-block;
         background-color: $color-coin-yellow;
-     //   border: 1px solid yellow;
         border-radius: 100%;
         height:100%;
         width: 100%;
@@ -36,47 +47,18 @@
     }
 
     &-red{
-        flex: 0 1 auto;
         color: transparent;
-      //  display: inline-block;
-        background-color: $color-coin-red;
-      //  border: 1px solid red;
+        background-color: $color-coin-red;    
         border-radius: 100%;
         height:100%;
         width: 100%;
-       font-size:0.1rem;
+        font-size:0.1rem;
         animation-name: coin;
         animation-duration: 0.2s;
         animation-fill-mode: forwards;  
     }
 }
 
-.root{
-    height:100vh;
-    width: 100vw;
-}
-
-.container-main {
-    display: flex;
-    height: 80%;
-    width: 100%;
-    flex-direction: row;
-    align-items: stretch;
-    flex-wrap: wrap;
-}
-
-.header{
-    display:inline-block;
-    text-align: center;
-    background-color: $color-primary;
-    color: white;
-    font-size: 1rem;
-    width: 13%;
-}
-
-.list {
-    list-style: none;
-}
 
 .pobeda{
     display:inline-block;
@@ -85,9 +67,9 @@
     text-align:center;
     background-color: $color-primary;
     border: 1px solid $color-back;
-    height: 10%;
+    height: 80px;
     width: 100%;
-    font-size: 3rem;
+    font-size:120%;
 }
 
 @keyframes coin{

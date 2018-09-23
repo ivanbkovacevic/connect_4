@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './css/connect_4.css';
 import Tabla from './Tabla';
 import ScoreBoard from './ScoreBoard';
+import ModalWindow from './ModalWindow';
+import { Grid,Col, Row } from 'react-bootstrap';
 
 
 class App extends Component {
@@ -306,17 +308,39 @@ class App extends Component {
     }
 
     return (
-      <div className='root'>
-        <ScoreBoard scoreY={scoreY} scoreR={scoreR} clicked={()=>this.gameReset()}/>
-     
-        <div className='pobeda'>
-           {this.state.message}
-        </div>
-        <div className='container-main'>
+     <Grid className='wraper-ceo'>
+        <ModalWindow/>
+      <Row>
+         <Col lg={2} md={3} sm={2}></Col>
+         <Col lg={5} md={6} sm={8}>
+             <ScoreBoard scoreY={scoreY} scoreR={scoreR} clicked={()=>this.gameReset()}/>
+         </Col>
+         <Col lg={3} md={3} sm={2}></Col>
+      </Row>
+      <Row>
+          <Col lg={2} md={3} sm={2}></Col>
+          <Col lg={5} md={6} sm={8}>
+            <div className='pobeda'>
+              {this.state.message}
+            </div>
+          </Col>
+          <Col lg={3} md={3} sm={2}></Col>
+      </Row>
+      <Row>
+      <Col lg={2} md={3} sm={2}></Col>
+      <Col lg={5} md={6} sm={8}>
+       <div className='wraper-tabla'>
+       <div className='container-tabla'>
           {tabla}
-        </div>
-       
-      </div>
+         </div>
+       </div>
+         
+        </Col>
+      <Col lg={3} md={3} sm={2}></Col>
+      </Row>
+         </Grid>
+    
+     
     );
   }
 }

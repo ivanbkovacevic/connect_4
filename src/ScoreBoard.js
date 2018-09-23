@@ -4,9 +4,9 @@ class ScoreBoard extends Component {
     render() {
         return (
             <div className='semafor'>
-                <span>ŽUTI<button className='button-win'>{this.props.scoreY}</button>   </span> 
-                <span>CRVENI<button className='button-win'>{this.props.scoreR}</button>   </span>
-                <span> <button className='button-newGame' onClick={this.props.clicked}>NEW GAME</button></span>
+                <div className='playerY'>ŽUTI</div><button className='button-winY'>{this.props.scoreY}</button>
+                <div className='playerR'>CRVENI</div><button className='button-winR'>{this.props.scoreR}</button>
+                <button className='button-newGame' onClick={this.props.clicked}>NEW GAME</button>
             </div>
         );
     }
