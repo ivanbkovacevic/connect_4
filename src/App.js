@@ -3,7 +3,7 @@ import './css/connect_4.css';
 import Tabla from './Tabla';
 import ScoreBoard from './ScoreBoard';
 import ModalWindow from './ModalWindow';
-import { Grid,Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row } from 'react-bootstrap';
 
 
 class App extends Component {
@@ -11,6 +11,7 @@ class App extends Component {
   state = {
     change: true,
     gameStarted: false,
+    firstCoin: true,
     cId: 0,
     winY: 4,
     winR: 8,
@@ -55,7 +56,7 @@ class App extends Component {
 
 
   gameReset = () => {   // RESETOVANJE IGRE ... 
-    let { coin, boardMatrix, sirina, visina, xDropedArr, message, y_pos, gameStarted } = this.state;
+    let { coin, boardMatrix, sirina, visina, xDropedArr, message, y_pos, gameStarted, firstCoin } = this.state;
 
     ///////////////////MATRICA///////////////////
     boardMatrix = boardMatrix.slice();
@@ -66,6 +67,7 @@ class App extends Component {
     message = '';
     y_pos = -1;
 
+    firstCoin = !firstCoin; //switch za prvi Coin
 
     for (let i = 0; i < visina; i++) {
 
@@ -81,12 +83,12 @@ class App extends Component {
       boardMatrix.push(y)
 
     }
-    this.setState({ boardMatrix, xDropedArr, message, y_pos });
+    this.setState({ boardMatrix, xDropedArr, message, y_pos, firstCoin });
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////
   dropCoin = (i, v, x, y) => {                   //GLAVNA funkcija    ubacivanje coin-a u verticalu i ubacivanje verticale u boardV
-    let { boardMatrix, change, message, y_pos, xDropedArr, scoreR, scoreY, value } = this.state;
+    let { boardMatrix, change, message, y_pos, xDropedArr, scoreR, scoreY, value, firstCoin } = this.state;
     boardMatrix = boardMatrix.slice();
 
     xDropedArr = xDropedArr.slice();
@@ -94,6 +96,12 @@ class App extends Component {
 
     change = !change;
     let y_pos_top = 6;
+
+    if (firstCoin === true) {  // uredjivanje da naizmenicno prvi coin ubacuje zuti pa crveni
+      value = 1;
+    } else {
+      value = 2;
+    }
 
     if (xDropedArr[x_pos].value < 7) {
       y_pos = xDropedArr[x_pos].value++;  // slaganje coina u coloni...ubacivanje coina u poseban array i pracenja tog valuea
@@ -308,39 +316,43 @@ class App extends Component {
     }
 
     return (
-     <Grid className='wraper-ceo'>
-        <ModalWindow/>
-      <Row>
-         <Col lg={2} md={3} sm={2}></Col>
-         <Col lg={5} md={6} sm={8}>
-             <ScoreBoard scoreY={scoreY} scoreR={scoreR} clicked={()=>this.gameReset()}/>
-         </Col>
-         <Col lg={3} md={3} sm={2}></Col>
-      </Row>
-      <Row>
+      <Grid className='wraper-ceo'>
+        <ModalWindow />
+        <Row>
           <Col lg={2} md={3} sm={2}></Col>
           <Col lg={5} md={6} sm={8}>
-            <div className='pobeda'>
-              {this.state.message}
+            <ScoreBoard scoreY={scoreY} scoreR={scoreR} clicked={() => this.gameReset()} />
+          </Col>
+          <Col lg={3} md={3} sm={2}></Col>
+        </Row>
+        <Row>
+          <Col lg={2} md={3} sm={2}></Col>
+          <Col lg={5} md={6} sm={8}>
+         
+              <div className='pobeda'>
+              <div className='naReduJe'>Na redu je:</div>              
+              <div className='coinY'></div> 
+              <div className='pobednik'> {this.state.message}</div>
+             
             </div>
           </Col>
           <Col lg={3} md={3} sm={2}></Col>
-      </Row>
-      <Row>
-      <Col lg={2} md={3} sm={2}></Col>
-      <Col lg={5} md={6} sm={8}>
-       <div className='wraper-tabla'>
-       <div className='container-tabla'>
-          {tabla}
-         </div>
-       </div>
-         
-        </Col>
-      <Col lg={3} md={3} sm={2}></Col>
-      </Row>
-         </Grid>
-    
-     
+        </Row>
+        <Row>
+          <Col lg={2} md={3} sm={2}></Col>
+          <Col lg={5} md={6} sm={8}>
+            <div className='wraper-tabla'>
+              <div className='container-tabla'>
+                {tabla}
+              </div>
+            </div>
+
+          </Col>
+          <Col lg={3} md={3} sm={2}></Col>
+        </Row>
+      </Grid>
+
+
     );
   }
 }
