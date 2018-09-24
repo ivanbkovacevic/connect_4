@@ -90,7 +90,6 @@ class App extends Component {
   dropCoin = (i, v, x, y) => {                   //GLAVNA funkcija    ubacivanje coin-a u verticalu i ubacivanje verticale u boardV
     let { boardMatrix, change, message, y_pos, xDropedArr, scoreR, scoreY, value, firstCoin } = this.state;
     boardMatrix = boardMatrix.slice();
-
     xDropedArr = xDropedArr.slice();
     let x_pos = x;     //  trazenje kolone u kojoj je ubacen coin i ubacivanje na dno prv put pa ya jedno mesto gore svaki drugi put
 
@@ -299,7 +298,9 @@ class App extends Component {
   }
 
   render() {
-    let { boardMatrix, scoreR, scoreY } = this.state;
+    let { boardMatrix, scoreR, scoreY,value } = this.state;
+    let nextPlayer='';
+    value===1 ? nextPlayer='coinR' : nextPlayer='coinY';
     boardMatrix = boardMatrix.slice();
     boardMatrix = boardMatrix.reverse();
     let tabla = [];
@@ -331,7 +332,7 @@ class App extends Component {
          
               <div className='pobeda'>
               <div className='naReduJe'>Na redu je:</div>              
-              <div className='coinY'></div> 
+              <div className={nextPlayer}></div> 
               <div className='pobednik'> {this.state.message}</div>
              
             </div>
