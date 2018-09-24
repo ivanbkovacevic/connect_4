@@ -21,9 +21,9 @@ class ModalWindow extends Component {
           </Modal.Header>
           <Modal.Body>
             <p>
-            Igru "Connect 4" igraju dva igrača naizmenično. Ubacivanjem žetona,
-             igrač pokušava da spoji četiri u nizu spojih žetona u bilo kom pravcu.Žeton ubacujete klikom na kolonu u koju želite da uabcite.
-             Igrač koji prvi to uspe, osvaja partiju. Klikom na NOVA IGRA započenjete partiju ispočetka.
+            Igru "Connect 4" igraju dva igrača naizmenično. Ubacivanjem žetona u tablu,
+             igrač pokušava da spoji četiri u nizu svojih žetona u bilo kom pravcu, pravolinijski. Žeton ubacujete klikom na kolonu u koju želite da ubacite.
+             Igrač koji prvi to uspe, osvaja partiju. Klikom na NOVA IGRA započinjete partiju ispočetka.
             </p>
 
           </Modal.Body>

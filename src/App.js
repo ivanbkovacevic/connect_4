@@ -298,9 +298,10 @@ class App extends Component {
   }
 
   render() {
-    let { boardMatrix, scoreR, scoreY,value } = this.state;
+    let { boardMatrix, scoreR, scoreY,value,message } = this.state;
     let nextPlayer='';
     value===1 ? nextPlayer='coinR' : nextPlayer='coinY';
+    message.length !==0 ? nextPlayer='' : null;
     boardMatrix = boardMatrix.slice();
     boardMatrix = boardMatrix.reverse();
     let tabla = [];
