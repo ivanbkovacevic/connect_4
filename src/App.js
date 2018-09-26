@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './css/connect_4.css';
 import Tabla from './Tabla';
+import AnimationTabla from './AnimationTabla';
 import ScoreBoard from './ScoreBoard';
 import ModalWindow from './ModalWindow';
-import { Grid, Col, Row } from 'react-bootstrap';
+import { Grid, Col, Row,Button } from 'react-bootstrap';
 
 
 class App extends Component {
@@ -352,6 +353,16 @@ class App extends Component {
           </Col>
           <Col lg={3} md={3} sm={2}></Col>
         </Row>
+        {/* ///////////////////////// */}
+        <Grid >
+        <Row className='justify-content-lg-center rowTest' >
+        <Col className='ml-5 colTest1'  lg={3}>1</Col>
+        <Col className='ml-5 colTest2' lg={3}>2
+        <Button  bsStyle="primary" disabled={false}>dyugne</Button></Col>
+       
+         
+        </Row>
+        </Grid>
       </Grid>
 
 

@@ -128,6 +128,25 @@ body {
   100% {
     transform: scale(0.8); } }
 
+.rowTest {
+  height: 200px;
+  color: white;
+  border: 1px solid white;
+  background-color: #095252; }
+
+.colTest1 {
+  color: white;
+  border: 1px solid white;
+  margin-top: 10px; }
+
+.colTest2 {
+  color: white;
+  border: 1px solid #9a9ab6; }
+
+.colTest3 {
+  color: white;
+  border: 1px solid #cc6262; }
+
 .semafor {
   background-color: #420c34;
   color: #f2f2f2;
